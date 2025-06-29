@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "@/styles/variables" as *;
 
 @mixin flex-center {
@@ -15,14 +16,12 @@
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 4px 15px
-    rgba(red($bg-color), green($bg-color), blue($bg-color), 0.6);
+  box-shadow: 0 4px 15px rgba($bg-color, 0.6);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     background-color: $hover-bg;
-    box-shadow: 0 6px 20px
-      rgba(red($hover-bg), green($hover-bg), blue($hover-bg), 0.8);
+    box-shadow: 0 6px 20px rgba($hover-bg, 0.8);
   }
 
   &:disabled {
