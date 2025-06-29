@@ -54,11 +54,11 @@ const AuthPage = () => {
           USER_ID_TOKEN_NAME,
           response.results[0].id?.value?.toString() ?? ""
         );
-        display("انجام عملیات با موفقیت انجام شد");
+        display(messages["success-login"]);
 
         setTimeout(() => {
           router.push("/dashboard");
-        }, 2000);
+        }, 500);
       } else {
         setValidationError(messages["unexpected-error"]);
       }
