@@ -1,0 +1,40 @@
+@use "@/styles/variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button($bg-color, $color: $color-white, $hover-bg) {
+  background-color: $bg-color;
+  color: $color;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px
+    rgba(red($bg-color), green($bg-color), blue($bg-color), 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: $hover-bg;
+    box-shadow: 0 6px 20px
+      rgba(red($hover-bg), green($hover-bg), blue($hover-bg), 0.8);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $color-gray;
+    box-shadow: none;
+  }
+}
+
+@mixin title($size: 1.8rem, $color: $color-primary) {
+  font-weight: 700;
+  font-size: $size;
+  color: $color;
+  margin-bottom: 25px;
+}

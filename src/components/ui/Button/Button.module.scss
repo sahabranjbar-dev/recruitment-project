@@ -1,0 +1,77 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  border-radius: vars.$border-radius;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
+
+  &--primary {
+    @include button(
+      vars.$color-primary,
+      vars.$color-white,
+      vars.$color-primary-dark
+    );
+  }
+
+  &--secondary {
+    @include button(
+      vars.$color-secondary-bg,
+      vars.$color-secondary-text,
+      vars.$color-secondary-border
+    );
+    border: 1px solid vars.$color-secondary-border;
+  }
+
+  &--danger {
+    @include button(
+      vars.$color-danger-bg,
+      vars.$color-white,
+      vars.$color-danger-dark
+    );
+  }
+
+  &--outline {
+    @include button(
+      vars.$color-gray-light,
+      vars.$color-secondary-text,
+      vars.$color-gray
+    );
+    border: 1px solid vars.$color-gray;
+  }
+
+  &--sm {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  &--md {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  &--lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    background-color: vars.$color-gray;
+  }
+
+  &__icon--left {
+    margin-left: 0.5rem;
+  }
+
+  &__icon--right {
+    margin-right: 0.5rem;
+  }
+}
