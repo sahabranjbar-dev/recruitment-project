@@ -1,0 +1,27 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.wrapper {
+  @include flex-center;
+  height: 100vh;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+
+    .login {
+      padding: 16px;
+      border-radius: 8px;
+      background-color: $color-primary;
+      color: $color-white;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 5px 5px 10px $color-primary-dark;
+      }
+    }
+  }
+}
