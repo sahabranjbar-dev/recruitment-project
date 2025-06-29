@@ -2,9 +2,11 @@
 import messages from "@/assets/messages/fa.json";
 import Button from "@/components/ui/Button/Button";
 import { clearLocalData, getLocalData } from "@/utils/common";
+import { RemoveToken } from "@/utils/serverActions/setToken";
 import { useRouter } from "next/navigation";
 import { useCallback, useLayoutEffect, useState } from "react";
 import { INFORMATION_KEY } from "../auth/meta/constants";
+import { USER_ID_TOKEN_NAME } from "../constants/constants";
 import styles from "./Dashboard.module.scss";
 
 const DashboardPage = () => {
@@ -17,16 +19,13 @@ const DashboardPage = () => {
   useLayoutEffect(() => {
     const storedData = getLocalData(INFORMATION_KEY);
 
-    if (!storedData?.id) {
-      router.replace("/auth");
-      return;
-    }
-    setName(storedData.name);
+    setName(storedData?.name);
   }, []);
 
   const onExitHandler = useCallback(() => {
     clearLocalData();
-    router.replace("/auth");
+    RemoveToken(USER_ID_TOKEN_NAME);
+    router.refresh();
   }, []);
 
   return (

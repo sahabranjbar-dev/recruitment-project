@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/main.scss";
 import AuthProvider from "@/providers/AuthProvider/AuthProvider";
 import { Vazirmatn } from "next/font/google";
+import { SnackbarProvider } from "@/providers/SnakbarProvider/SnackbarProvider";
+
 export const metadata: Metadata = {
   title: "Next App",
   description: "Login & Dashboard",
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={vazirmatn.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <SnackbarProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </SnackbarProvider>
       </body>
     </html>
   );

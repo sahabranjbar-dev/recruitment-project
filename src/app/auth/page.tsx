@@ -14,7 +14,10 @@ import { AUTH_ENDPOINTS, INFORMATION_KEY } from "./meta/constants";
 import { Information } from "./meta/types";
 import { informationParser, validateIranianPhoneNumber } from "./meta/utils";
 
+import { useSnackbar } from "@/hooks/useSnackbar/useSnackbar";
 import { cn } from "@/utils/classNames";
+import { setToken } from "@/utils/serverActions/setToken";
+import { USER_ID_TOKEN_NAME } from "../constants/constants";
 import styles from "./Auth.module.scss";
 
 const AuthPage = () => {
@@ -22,6 +25,7 @@ const AuthPage = () => {
   const [validationError, setValidationError] = useState("");
   const router = useRouter();
   const { setUserData } = useAuth();
+  const display = useSnackbar();
 
   const { loading, fetchData } = useFetch<{ results: Information[] }>({
     url: AUTH_ENDPOINTS.get,
@@ -46,7 +50,15 @@ const AuthPage = () => {
 
       if (response?.results?.[0]) {
         persistUserData(response.results[0]);
-        router.replace("/dashboard");
+        setToken(
+          USER_ID_TOKEN_NAME,
+          response.results[0].id?.value?.toString() ?? ""
+        );
+        display("انجام عملیات با موفقیت انجام شد");
+
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 2000);
       } else {
         setValidationError(messages["unexpected-error"]);
       }
