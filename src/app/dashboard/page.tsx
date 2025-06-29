@@ -32,7 +32,10 @@ const DashboardPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapper__content}>
-        <h2> {name || "کاربر"} به داشبورد خوش‌آمدید</h2>
+        <h2>
+          {" "}
+          {name || "کاربر"} {messages["welcome-to-dashboard"]}
+        </h2>
         <Button onClick={onExitHandler}>{messages.exit}</Button>
       </div>
     </div>

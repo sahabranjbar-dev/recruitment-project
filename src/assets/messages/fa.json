@@ -5,6 +5,7 @@
   "enter": "ورود",
   "unexpected-error": "خطای غیرمنتظره",
   "welcome-to-home-page": "به صفحه اصلی خوش‌آمدید",
-  "login-page": "صفحه‌ی رورد",
-  "exit": "خروج"
+  "login-page": "صفحه‌ی ورود",
+  "exit": "خروج",
+  "welcome-to-dashboard": "به داشبورد خوش‌آمدید"
 }
