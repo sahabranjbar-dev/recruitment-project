@@ -1,0 +1,74 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as *;
+
+.login {
+  min-height: 100vh;
+  @include flex-center;
+  background: linear-gradient(
+    135deg,
+    vars.$color-primary 0%,
+    vars.$color-primary-light 100%
+  );
+  padding: 20px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: vars.$color-secondary-bg;
+    padding: 40px 30px;
+    border-radius: vars.$border-radius;
+    box-shadow: 0 12px 30px vars.$box-shadow-color;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    min-height: 400px;
+  }
+
+  &__title {
+    @include title();
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1;
+
+    &__inputWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &__label {
+        font-size: 14px;
+        color: vars.$color-secondary-text;
+      }
+
+      &__not_valid {
+        border: 1px solid vars.$color-destructure !important;
+      }
+
+      &__errorText {
+        color: vars.$color-destructure;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__submit-btn {
+    @include button(vars.$color-primary, white, vars.$color-primary-dark);
+  }
+
+  @media (max-width: 480px) {
+    &__container {
+      padding: 30px 20px;
+      max-width: 100%;
+    }
+
+    &__title {
+      @include title(24px);
+    }
+  }
+}
