@@ -1,0 +1,14 @@
+@use "@/styles/mixins.scss" as *;
+
+.wrapper {
+  @include flex-center;
+  height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+}
